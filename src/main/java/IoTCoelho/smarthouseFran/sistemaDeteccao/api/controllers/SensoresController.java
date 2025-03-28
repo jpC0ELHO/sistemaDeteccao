@@ -2,7 +2,7 @@ package IoTCoelho.smarthouseFran.sistemaDeteccao.api.controllers;
 
 import IoTCoelho.smarthouseFran.sistemaDeteccao.api.dtos.SensoresRequest;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.api.dtos.SensoresResponse;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.api.services.SensoresService;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.api.services.sensores.SensoresService;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.enums.Regiao;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.enums.SensoresTipo;
 import lombok.AllArgsConstructor;
