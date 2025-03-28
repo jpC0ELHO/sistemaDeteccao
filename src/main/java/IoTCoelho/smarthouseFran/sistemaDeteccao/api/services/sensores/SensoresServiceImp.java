@@ -1,4 +1,4 @@
-package IoTCoelho.smarthouseFran.sistemaDeteccao.api.services;
+package IoTCoelho.smarthouseFran.sistemaDeteccao.api.services.sensores;
 
 import IoTCoelho.smarthouseFran.sistemaDeteccao.api.dtos.SensoresRequest;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.api.dtos.SensoresResponse;
