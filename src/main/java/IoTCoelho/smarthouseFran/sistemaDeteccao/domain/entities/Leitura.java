@@ -26,7 +26,7 @@ import java.time.LocalDateTime;
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class Leitura extends Entidade{
     @Column(nullable = false, name = "deteccao_sim_nao")
-    private Boolean  deteccao_sim_nao;
+    private boolean  deteccao_sim_nao;
     @Enumerated(EnumType.STRING)
     private DeteccaoTipo deteccaoTipo;
     @Column(name = "horario_detectado")
@@ -36,8 +36,8 @@ public class Leitura extends Entidade{
     @JsonSerialize(using = DateSerializer.class)
     private LocalDateTime horarioDetec;
     @ManyToOne
-    @JoinColumn(name = "localizacao_id", nullable = false)
-    private Local localizacao;
+    @JoinColumn(name = "local_id", nullable = false)
+    private Local local;
     @ManyToOne
     @JoinColumn(name = "sensor_id", nullable = false)
     private Sensores sensor;
