@@ -42,5 +42,7 @@ public class Leitura extends Entidade{
     @JoinColumn(name = "sensor_id", nullable = false)
     private Sensores sensor;
 
+    //Classe de atualizacao constante com WebSockets
+
 }
 
