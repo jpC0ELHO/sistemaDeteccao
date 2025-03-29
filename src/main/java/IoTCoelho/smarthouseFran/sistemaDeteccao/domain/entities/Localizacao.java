@@ -26,7 +26,7 @@ import java.util.Map;
 @Table(name = "local")
 @EntityListeners(AuditingEntityListener.class)
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class Local extends Entidade{
+public class Localizacao extends Entidade{
     @ManyToOne
     @JoinColumn(name = "sensor_id", nullable = false)
     private Sensores sensor;
@@ -34,9 +34,8 @@ public class Local extends Entidade{
     private Double latitude;
     @Column(precision = 5,name = "Longitude",nullable = false)
     private Double longitude;
-
     @ElementCollection(fetch = FetchType.LAZY)
-    @CollectionTable(name = "sensor_regioes", joinColumns = @JoinColumn(name = "sensor_id"))
+    @CollectionTable(name = "local_regioes", joinColumns = @JoinColumn(name = "local_id"))
     @MapKeyEnumerated(EnumType.STRING) // Armazena a chave como texto no banco
     @MapKeyColumn(name = "regiao") // Nome da chave na tabela
     @Column(name = "ativo") // Nome do valor (Boolean)
