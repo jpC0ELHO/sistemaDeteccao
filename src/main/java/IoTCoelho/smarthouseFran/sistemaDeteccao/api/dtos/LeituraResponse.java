@@ -1,7 +1,7 @@
 package IoTCoelho.smarthouseFran.sistemaDeteccao.api.dtos;
 
 import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.Leitura;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.Local;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.Localizacao;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.Sensores;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.enums.DeteccaoTipo;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -29,7 +29,7 @@ public record LeituraResponse(
         @JsonDeserialize(using = DateDeserializers.DateDeserializer.class)
         @JsonSerialize(using = DateSerializer.class)
         LocalDateTime horarioDetec,
-        Local local,
+        Localizacao local,
         Sensores sensores,
         String createdBy,
         String lastModifiedBy,
