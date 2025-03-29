@@ -48,7 +48,7 @@ public class SensoresServiceImp implements SensoresService{
 
     @Override
     public void createSensores(SensoresRequest sensoresRequest) {
-    var findSensoresByNome=sensoresRespository.findByName(sensoresRequest.nome());
+    var findSensoresByNome=sensoresRespository.findByNome(sensoresRequest.nome());
     if (findSensoresByNome.isPresent()){
         log.warn("Sensor with name: {} already exists!",sensoresRequest.nome());
         throw new ModelIntegrityViolationException("This name already exists!");
