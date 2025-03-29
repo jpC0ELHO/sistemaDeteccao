@@ -37,7 +37,7 @@ public class Leitura extends Entidade{
     private LocalDateTime horarioDetec;
     @ManyToOne
     @JoinColumn(name = "local_id", nullable = false)
-    private Local local;
+    private Localizacao local;
     @ManyToOne
     @JoinColumn(name = "sensor_id", nullable = false)
     private Sensores sensor;
