@@ -1,7 +1,7 @@
 package IoTCoelho.smarthouseFran.sistemaDeteccao.api.dtos;
 
 import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.Leitura;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.Local;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.Localizacao;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.Sensores;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.enums.DeteccaoTipo;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -26,7 +26,7 @@ public record LeituraRequest(
         @NotNull
         LocalDateTime horarioDetec,
         @NotNull
-        Local local,
+        Localizacao local,
         @NotNull
         Sensores sensores
 ) {
