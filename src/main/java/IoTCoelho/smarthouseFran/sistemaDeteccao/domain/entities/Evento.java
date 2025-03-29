@@ -30,7 +30,7 @@ public class Evento extends Entidade {
     private String tipoEvento;
     @ManyToOne
     @JoinColumn(name = "local_id")
-    private Local local;
+    private Localizacao local;
     @Column(nullable = false)
     private String descricao;
     @Column(name = "horario_evento", nullable = false)
