@@ -1,6 +1,6 @@
 package IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities;
 
-import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.enums.EventoTipo;
+import  IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.enums.EventoTipo;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -26,8 +26,6 @@ import java.util.Map;
 @EntityListeners(AuditingEntityListener.class)
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class Evento extends Entidade {
-    @Column(nullable = false)
-    private String tipoEvento;
     @ManyToOne
     @JoinColumn(name = "local_id")
     private Localizacao local;
