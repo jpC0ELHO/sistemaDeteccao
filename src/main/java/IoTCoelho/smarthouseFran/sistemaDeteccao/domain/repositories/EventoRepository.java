@@ -8,4 +8,5 @@ import java.util.UUID;
 
 public interface EventoRepository extends JpaRepository<Evento, UUID> {
     Optional<Evento>findById(UUID uuid);
+
 }
