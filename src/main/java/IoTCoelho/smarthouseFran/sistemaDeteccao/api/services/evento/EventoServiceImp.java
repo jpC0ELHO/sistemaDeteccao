@@ -2,10 +2,13 @@ package IoTCoelho.smarthouseFran.sistemaDeteccao.api.services.evento;
 
 import IoTCoelho.smarthouseFran.sistemaDeteccao.api.dtos.EventoRequest;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.api.dtos.EventoResponse;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.Evento;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.exceptions.ModelNotFoundException;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.repositories.EventoRepository;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +22,7 @@ import static IoTCoelho.smarthouseFran.sistemaDeteccao.api.dtos.EventoRequest.to
 @AllArgsConstructor
 public class EventoServiceImp implements EventoService{
     private final EventoRepository eventoRepository;
+    private final SimpMessagingTemplate messagingTemplate;
     @Override
     public List<EventoResponse> findEventoList() {
         try {
@@ -43,8 +47,12 @@ public class EventoServiceImp implements EventoService{
     }
     //Todos os eventos devem ser salvos, por esse motivo não há tratamento na classe, apenas de erros.
     @Override
+    @Transactional
     public void createEvento(EventoRequest eventoRequest) {
-    eventoRepository.save(toEntidade(eventoRequest));
+    Evento eventoSalvo=eventoRepository.save(toEntidade(eventoRequest));
+    EventoResponse eventoResponse=EventoResponse.toResponse(eventoSalvo);
+    messagingTemplate.convertAndSend("/topic/alertas",eventoResponse);
+    log.info("Alert send: {}",eventoResponse);
     }
 
     @Override
