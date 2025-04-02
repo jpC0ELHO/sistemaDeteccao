@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -17,31 +18,37 @@ import java.util.UUID;
 @RequestMapping(value = "/leitura/v1")
 @AllArgsConstructor
 public class LeituraController {
-    private final LeituraService leituraSerivce;
+    private final LeituraService leituraService;
 
-    @GetMapping(consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<LeituraResponse>>findLeituraList(){
-        return ResponseEntity.status(HttpStatus.OK).body(leituraSerivce.findLeituraList());
+        return ResponseEntity.status(HttpStatus.OK).body(leituraService.findLeituraList());
     }
-    @GetMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Optional<LeituraResponse>>findLeituraId(@PathVariable UUID id){
-        return ResponseEntity.status(HttpStatus.OK).body(leituraSerivce.findLeituraId(id));
+        return ResponseEntity.status(HttpStatus.OK).body(leituraService.findLeituraId(id));
     }
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE,
     consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public void createLeitura(@RequestBody LeituraRequest leituraRequest){
-        leituraSerivce.createLeitura(leituraRequest);
+        leituraService.createLeitura(leituraRequest);
     }
     @PutMapping(value = "/{id}",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public void updateLeitura(@PathVariable UUID id,@RequestBody LeituraRequest leituraRequest){
-        leituraSerivce.updateLeitura(id,leituraRequest);
+        leituraService.updateLeitura(id,leituraRequest);
     }
 
     @DeleteMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteLeitura(@PathVariable UUID id){
-        leituraSerivce.deleteLeitura(id);
+        leituraService.deleteLeitura(id);
+    }
+    @PatchMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Map<String, String>> processarLeitura(@RequestBody LeituraRequest leituraRequest) {
+        leituraService.processarLeitura(leituraRequest);
+        Map<String, String> response = Map.of("mensagem", "Leitura processada com sucesso!");
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 }
