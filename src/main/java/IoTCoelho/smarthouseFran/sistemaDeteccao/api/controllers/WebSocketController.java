@@ -18,7 +18,8 @@ public class WebSocketController {
         log.info("Alerta disparado: {}",evento);
         return evento;
     }
-
+    @MessageMapping("/afericao")
+    @SendTo("/topic/afericao")
     public Leitura afericao(Leitura leitura){
         log.info("Aferição de Sensores: {}",leitura);
         return leitura;
