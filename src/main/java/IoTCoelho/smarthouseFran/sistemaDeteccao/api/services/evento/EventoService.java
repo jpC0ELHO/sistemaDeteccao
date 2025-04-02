@@ -14,7 +14,7 @@ public interface EventoService {
     List<EventoResponse>findEventoList();
     Optional<EventoResponse>findEventoId(UUID uuid);
     void createEvento(EventoRequest eventoRequest);
-    Evento createEventoLeitura(Leitura leitura, EventoTipo eventoTipo);
+    EventoResponse detecEventoLeitura(Leitura leitura, EventoTipo eventoTipo);
     void updateEvento(UUID uuid,EventoRequest eventoRequest);
     void deleteEvento(UUID uuid);
 }
