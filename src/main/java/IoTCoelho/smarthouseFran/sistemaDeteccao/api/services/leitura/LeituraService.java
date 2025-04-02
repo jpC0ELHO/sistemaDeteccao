@@ -10,7 +10,9 @@ import java.util.UUID;
 public interface LeituraService {
     List<LeituraResponse>findLeituraList();
     Optional<LeituraResponse>findLeituraId(UUID uuid);
+    void processarLeitura(LeituraRequest leituraRequest);
     void createLeitura(LeituraRequest leituraRequest);
     void updateLeitura(UUID uuid,LeituraRequest leituraRequest);
     void deleteLeitura(UUID uuid);
+
 }
