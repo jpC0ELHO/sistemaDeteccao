@@ -21,12 +21,12 @@ import java.util.UUID;
 public class LocalizacaoController {
     private final LocalizacaoService localizacaoService;
 
-    @GetMapping(consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<LocalizacaoResponse>>findLocalizacaoList(){
         return ResponseEntity.status(HttpStatus.FOUND).body(localizacaoService.findLocalizacaoList());
     }
 
-    @GetMapping(value = "/{id}",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Optional<LocalizacaoResponse>>findLocalizacaoId(@PathVariable UUID id){
         return ResponseEntity.status(HttpStatus.FOUND).body(localizacaoService.findLocalizacaoId(id));
     }
@@ -47,6 +47,7 @@ public class LocalizacaoController {
     }
 
     @PatchMapping(value = "/{id}/regiao")
+    @ResponseStatus(HttpStatus.OK)
     public void atualizarRegiao(@PathVariable UUID id, @RequestBody Map<Regiao,Boolean>novasRegioes){
         localizacaoService.atualizarRegiao(id,novasRegioes);
     }
