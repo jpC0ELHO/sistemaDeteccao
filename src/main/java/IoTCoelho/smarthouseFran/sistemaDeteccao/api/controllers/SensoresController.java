@@ -22,12 +22,12 @@ import java.util.UUID;
 public class SensoresController {
     private final SensoresService sensoresService;
 
-    @GetMapping(consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<SensoresResponse>>findSensoresList(){
         return ResponseEntity.status(HttpStatus.OK).body(sensoresService.findSensoresList());
     }
     @GetMapping(value = "/{id}",
-            consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+            produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Optional<SensoresResponse>>findSensoresId(@PathVariable UUID id){
         return ResponseEntity.status(HttpStatus.OK).body(sensoresService.findSensoresId(id));
     }
