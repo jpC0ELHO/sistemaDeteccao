@@ -3,6 +3,8 @@ package IoTCoelho.smarthouseFran.sistemaDeteccao.api.services.evento;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.api.dtos.EventoRequest;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.api.dtos.EventoResponse;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.Evento;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.Leitura;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.enums.EventoTipo;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.exceptions.ModelNotFoundException;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.repositories.EventoRepository;
 import jakarta.transaction.Transactional;
@@ -11,7 +13,9 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -39,11 +43,12 @@ public class EventoServiceImp implements EventoService{
 
     @Override
     public Optional<EventoResponse> findEventoId(UUID uuid) {
-        var findEventoId=eventoRepository.findById(uuid);
-        if (findEventoId.isEmpty()){
-            throw new ModelNotFoundException("ID: "+uuid+" not found!");
-        }
-        return findEventoId.map(EventoResponse::toResponse);
+        return eventoRepository.findById(uuid)
+                .map(EventoResponse::toResponse)
+                .or(() -> {
+                    log.error("ID: {} not found!", uuid);
+                    throw new ModelNotFoundException("ID: " + uuid + " not found!");
+                });
     }
     //Todos os eventos devem ser salvos, por esse motivo não há tratamento na classe, apenas de erros.
     @Override
@@ -53,6 +58,22 @@ public class EventoServiceImp implements EventoService{
     EventoResponse eventoResponse=EventoResponse.toResponse(eventoSalvo);
     messagingTemplate.convertAndSend("/topic/alertas",eventoResponse);
     log.info("Alert send: {}",eventoResponse);
+    }
+
+    @Override
+    public Evento createEventoLeitura(Leitura leitura, EventoTipo eventoTipo) {
+        Evento evento=new Evento();
+        evento.setSensor(leitura.getSensor());
+        evento.setLocal(leitura.getLocal());
+        evento.setHorarioEvento(LocalDateTime.now());
+        evento.setDescricao("Evento detectado: " + eventoTipo.name());
+        evento.setEventoTipo(Map.of(eventoTipo, true));
+        Evento eventoSalvo = eventoRepository.save(evento);
+        EventoResponse eventoResponse = EventoResponse.toResponse(eventoSalvo);
+        messagingTemplate.convertAndSend("/topic/alertas", eventoResponse);
+
+        log.info("Evento detectado enviado: {}", eventoResponse);
+        return eventoSalvo;
     }
 
     @Override
