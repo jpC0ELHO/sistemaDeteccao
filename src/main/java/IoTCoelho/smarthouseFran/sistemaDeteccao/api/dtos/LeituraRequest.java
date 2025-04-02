@@ -1,5 +1,6 @@
 package IoTCoelho.smarthouseFran.sistemaDeteccao.api.dtos;
 
+import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.Evento;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.Leitura;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.Localizacao;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.Sensores;
@@ -13,6 +14,7 @@ import jakarta.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public record LeituraRequest(
         @NotNull
@@ -28,7 +30,11 @@ public record LeituraRequest(
         @NotNull
         Localizacao local,
         @NotNull
-        Sensores sensores
+        Sensores sensores,
+        @NotNull
+        int valorAferido,
+        @NotNull
+        List<Evento> eventos
 ) {
     public static Leitura toEntidade(LeituraRequest leituraRequest){
         if (leituraRequest==null){
@@ -39,7 +45,9 @@ public record LeituraRequest(
                 leituraRequest.deteccaoTipo,
                 leituraRequest.horarioDetec,
                 leituraRequest.local,
-                leituraRequest.sensores
+                leituraRequest.sensores,
+                leituraRequest.valorAferido,
+                leituraRequest.eventos
         );
     }
 }
