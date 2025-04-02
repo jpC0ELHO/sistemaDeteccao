@@ -1,5 +1,6 @@
 package IoTCoelho.smarthouseFran.sistemaDeteccao.api.services.leitura;
 
+import IoTCoelho.smarthouseFran.sistemaDeteccao.api.controllers.WebSocketController;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.api.dtos.EventoResponse;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.api.dtos.LeituraRequest;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.api.dtos.LeituraResponse;
@@ -29,6 +30,7 @@ public class LeituraServiceImp implements LeituraService {
         private final LeituraRepository leituraRepository;
         private final SimpMessagingTemplate simpMessagingTemplate;
         private final EventoRepository eventoRepository;
+        private final WebSocketController webSocketController;
     @Override
     public List<LeituraResponse> findLeituraList() {
         try {
@@ -56,6 +58,7 @@ public class LeituraServiceImp implements LeituraService {
     @Override
     public void processarLeitura(LeituraRequest leituraRequest) {
         Leitura leitura=leituraRepository.save(toEntidade(leituraRequest));
+        webSocketController.enviarAfericao(leitura);
         int valor=leituraRequest.valorAferido();
         Optional<EventoTipo>eventoTipoOpt=EventoTipo.detectarEvento(valor);
         eventoTipoOpt.ifPresent(eventoTipo->{
@@ -69,6 +72,7 @@ public class LeituraServiceImp implements LeituraService {
             EventoResponse eventoResponse=EventoResponse.toResponse(eventoSalvo);
             simpMessagingTemplate.convertAndSend("/topic/alertas",eventoResponse);
             log.info("Evento detectado enviado: {}",eventoResponse);
+            webSocketController.enviarEvento(eventoSalvo);
         });
     }
 
