@@ -1,5 +1,6 @@
 package IoTCoelho.smarthouseFran.sistemaDeteccao.api.dtos;
 
+import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.Evento;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.Leitura;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.Localizacao;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.Sensores;
@@ -15,11 +16,12 @@ import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 @JsonPropertyOrder({"uuid","deteccao_sim_nao","horarioDetec","local",
-        "sensores","createdBy","lastModifiedBy","createdAt","updatedAt"})
+        "sensores","valorAferido","eventos","createdBy","lastModifiedBy","createdAt","updatedAt"})
 public record LeituraResponse(
         UUID uuid,
         boolean deteccao_sim_nao,
@@ -31,6 +33,8 @@ public record LeituraResponse(
         LocalDateTime horarioDetec,
         Localizacao local,
         Sensores sensores,
+        int valorAferido,
+        List<Evento> eventos,
         String createdBy,
         String lastModifiedBy,
         @DateTimeFormat(pattern = "dd/MM/yyyy")
@@ -50,11 +54,13 @@ public record LeituraResponse(
         }
         return new LeituraResponse(
                 leitura.getUuid(),
-                leitura.isDeteccao_sim_nao(),
+                leitura.isDeteccaoSimNao(),
                 leitura.getDeteccaoTipo(),
                 leitura.getHorarioDetec(),
                 leitura.getLocal(),
                 leitura.getSensor(),
+                leitura.getValorAferido(),
+                leitura.getEventos(),
                 leitura.getCreatedBy(),
                 leitura.getLastModifiedBy(),
                 leitura.getCreatedAt(),
