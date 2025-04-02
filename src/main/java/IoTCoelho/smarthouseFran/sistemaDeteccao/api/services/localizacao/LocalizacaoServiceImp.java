@@ -47,7 +47,7 @@ public class LocalizacaoServiceImp implements LocalizacaoService{
         var findLocalizacaoByRegiao=localizacaoRepository.findByRegiao(localizacaoRequest.regiao());
         if (findLocalizacaoByRegiao.isPresent()){
             throw new ModelIntegrityViolationException("Localizacao with Regiao: "
-                    +localizacaoRequest.regiao()+" already exists!");
+                    +localizacaoRequest.regiao()+"and Sensor: "+localizacaoRequest.sensores()+" already exists!");
         }
         localizacaoRepository.save(toEntidade(localizacaoRequest));
     }
