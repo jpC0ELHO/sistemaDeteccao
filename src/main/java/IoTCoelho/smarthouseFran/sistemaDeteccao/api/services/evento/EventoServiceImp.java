@@ -61,19 +61,21 @@ public class EventoServiceImp implements EventoService{
     }
 
     @Override
-    public Evento createEventoLeitura(Leitura leitura, EventoTipo eventoTipo) {
-        Evento evento=new Evento();
+    @Transactional
+    public EventoResponse detecEventoLeitura(Leitura leitura, EventoTipo eventoTipo) {
+        Evento evento = new Evento();
         evento.setSensor(leitura.getSensor());
         evento.setLocal(leitura.getLocal());
         evento.setHorarioEvento(LocalDateTime.now());
         evento.setDescricao("Evento detectado: " + eventoTipo.name());
         evento.setEventoTipo(Map.of(eventoTipo, true));
+
         Evento eventoSalvo = eventoRepository.save(evento);
         EventoResponse eventoResponse = EventoResponse.toResponse(eventoSalvo);
         messagingTemplate.convertAndSend("/topic/alertas", eventoResponse);
 
         log.info("Evento detectado enviado: {}", eventoResponse);
-        return eventoSalvo;
+        return eventoResponse;
     }
 
     @Override
