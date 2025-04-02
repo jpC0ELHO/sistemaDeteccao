@@ -1,6 +1,7 @@
 package IoTCoelho.smarthouseFran.sistemaDeteccao.api.controllers;
 
 import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.Evento;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.Leitura;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -16,5 +17,10 @@ public class WebSocketController {
     public Evento enviarAlerta(Evento evento){
         log.info("Alerta disparado: {}",evento);
         return evento;
+    }
+
+    public Leitura afericao(Leitura leitura){
+        log.info("Aferição de Sensores: {}",leitura);
+        return leitura;
     }
 }
