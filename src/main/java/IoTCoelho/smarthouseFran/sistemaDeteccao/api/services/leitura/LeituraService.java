@@ -14,5 +14,4 @@ public interface LeituraService {
     void createLeitura(LeituraRequest leituraRequest);
     void updateLeitura(UUID uuid,LeituraRequest leituraRequest);
     void deleteLeitura(UUID uuid);
-
 }
