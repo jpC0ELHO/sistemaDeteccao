@@ -16,6 +16,8 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -26,7 +28,7 @@ import java.time.LocalDateTime;
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class Leitura extends Entidade{
     @Column(nullable = false, name = "deteccao_sim_nao")
-    private boolean  deteccao_sim_nao;
+    private boolean deteccaoSimNao;
     @Enumerated(EnumType.STRING)
     private DeteccaoTipo deteccaoTipo;
     @Column(name = "horario_detectado")
@@ -41,7 +43,11 @@ public class Leitura extends Entidade{
     @ManyToOne
     @JoinColumn(name = "sensor_id", nullable = false)
     private Sensores sensor;
+    @Column(name = "valor_aferido", nullable = false)
+    private int valorAferido;
 
+    @OneToMany(mappedBy = "leitura", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Evento> eventos = new ArrayList<>();
     //Classe de atualizacao constante com WebSockets
 
 }
