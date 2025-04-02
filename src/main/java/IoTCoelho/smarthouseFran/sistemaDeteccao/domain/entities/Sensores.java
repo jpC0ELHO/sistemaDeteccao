@@ -58,9 +58,9 @@ public class Sensores extends Entidade{
 
     @ElementCollection(fetch = FetchType.LAZY)
     @CollectionTable(name = "sensor_tipos", joinColumns = @JoinColumn(name = "sensor_id"))
-    @MapKeyEnumerated(EnumType.STRING) // Armazena a chave como texto no banco
-    @MapKeyColumn(name = "tipo") // Nome da chave na tabela
-    @Column(name = "ativo") // Nome do valor (Boolean)
+    @MapKeyEnumerated(EnumType.STRING)
+    @MapKeyColumn(name = "tipo")
+    @Column(name = "ativo")
     private Map<SensoresTipo, Boolean> sensorTipo = new HashMap<>();
 
     public void atualizarSensores(Map<SensoresTipo, Boolean> novosEstados) {
