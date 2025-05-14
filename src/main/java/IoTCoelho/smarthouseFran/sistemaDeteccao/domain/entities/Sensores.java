@@ -48,7 +48,6 @@ public class Sensores extends Entidade{
     private BigDecimal valorDadosTransferencia;
     @Column(name = "descricao_dados")
     private String dadosDescricao;
-
     @ElementCollection(fetch = FetchType.LAZY)
     @CollectionTable(name = "sensor_regioes", joinColumns = @JoinColumn(name = "sensor_id"))
     @MapKeyEnumerated(EnumType.STRING) // Armazena a chave como texto no banco
