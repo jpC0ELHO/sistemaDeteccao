@@ -69,7 +69,7 @@ public class Administrador implements UserDetails {
     @Column(name = "cpf",length = 11)
     private String cpf;
     @Column(name = "atividade")
-    private Boolean ativo=true;
+    private boolean ativo=true;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
