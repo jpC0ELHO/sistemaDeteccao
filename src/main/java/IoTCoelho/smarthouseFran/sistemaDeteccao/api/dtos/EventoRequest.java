@@ -1,6 +1,7 @@
 package IoTCoelho.smarthouseFran.sistemaDeteccao.api.dtos;
 
 import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.Evento;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.Leitura;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.Localizacao;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.Sensores;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.enums.EventoTipo;
@@ -33,7 +34,8 @@ public record EventoRequest (
         @NotNull
         Map<EventoTipo,Boolean> eventoTipo,
         @NotNull
-        Sensores sensor
+        Sensores sensor,
+        @NotNull Leitura leitura
 ){
     public static Evento toEntidade(EventoRequest eventoRequest){
         if (eventoRequest==null){
@@ -44,7 +46,8 @@ public record EventoRequest (
                 eventoRequest.descricao,
                 eventoRequest.horarioEvento,
                 eventoRequest.eventoTipo,
-                eventoRequest.sensor
+                eventoRequest.sensor,
+                eventoRequest.leitura
         );
     }
 }

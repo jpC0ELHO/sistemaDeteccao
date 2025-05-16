@@ -1,6 +1,7 @@
 package IoTCoelho.smarthouseFran.sistemaDeteccao.api.dtos;
 
 import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.Evento;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.Leitura;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.Localizacao;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.Sensores;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.domain.entities.enums.EventoTipo;
@@ -19,7 +20,7 @@ import java.util.Map;
 import java.util.UUID;
 
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-@JsonPropertyOrder({"uuid","local","descricao","horarioEvento","eventoTipo","sensor"
+@JsonPropertyOrder({"uuid","local","descricao","horarioEvento","eventoTipo","sensor","leitura"
         ,"createdBy","lastModifiedBy","createdAt","updatedAt"})
 public record EventoResponse(
         UUID uuid,
@@ -32,6 +33,7 @@ public record EventoResponse(
         LocalDateTime horarioEvento,
         Map<EventoTipo,Boolean>eventoTipo,
         Sensores sensor,
+        Leitura leitura,
         String createdBy,
         String lastModifiedBy,
         @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
@@ -56,6 +58,7 @@ public record EventoResponse(
                 evento.getHorarioEvento(),
                 evento.getEventoTipo(),
                 evento.getSensor(),
+                evento.getLeitura(),
                 evento.getCreatedBy(),
                 evento.getLastModifiedBy(),
                 evento.getCreatedAt(),

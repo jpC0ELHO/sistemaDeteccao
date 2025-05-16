@@ -46,6 +46,9 @@ public class Evento extends Entidade {
     @ManyToOne
     @JoinColumn(name = "sensor_id")
     private Sensores sensor;
+    @ManyToOne
+    @JoinColumn(name = "leitura_id")
+    private Leitura leitura;
 
     //Classe de atualizacao constante com WebSockets
 }
