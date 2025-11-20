@@ -68,6 +68,7 @@ public class Administrador implements UserDetails {
     @CPF
     @Column(name = "cpf",length = 11)
     private String cpf;
+
     @Column(name = "atividade")
     private boolean ativo=true;
 
