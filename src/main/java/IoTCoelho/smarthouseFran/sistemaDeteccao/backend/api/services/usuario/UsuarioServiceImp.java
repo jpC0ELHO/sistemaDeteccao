@@ -2,11 +2,14 @@ package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.services.usuario;
 
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.UsuarioRequest;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.UsuarioResponse;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.Usuario;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.exceptions.ModelIntegrityViolationException;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.exceptions.ModelNotFoundException;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.repositories.UsuarioRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -46,7 +49,7 @@ public class UsuarioServiceImp implements UsuarioService{
 
     @Override
     public void createUsuario(UsuarioRequest usuarioRequest) {
-    var findUsuarioName=usuarioRepository.findByName(usuarioRequest.username());
+    var findUsuarioName=usuarioRepository.findByUsername(usuarioRequest.username());
     if (findUsuarioName.isPresent()){
         log.info("Usernamen: {} already exists!",usuarioRequest.username());
         throw new ModelIntegrityViolationException("Username already exists!");
@@ -80,5 +83,16 @@ public class UsuarioServiceImp implements UsuarioService{
     }catch (RuntimeException e){
         log.error(e.getMessage());
     }
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Usuario usuario= usuarioRepository.findByUsername(username)
+                .orElseThrow(()-> new UsernameNotFoundException("Username not found!"));
+        return new org.springframework.security.core.userdetails.User(
+                usuario.getUsername(),
+                usuario.getPassword(),
+                usuario.getAuthorities()
+        );
     }
 }
