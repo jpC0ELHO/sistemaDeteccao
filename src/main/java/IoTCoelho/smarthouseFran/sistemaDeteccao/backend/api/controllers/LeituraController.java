@@ -1,7 +1,7 @@
 package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.controllers;
 
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.LeituraRequest;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.LeituraResponse;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.leitura.LeituraRequest;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.leitura.LeituraResponse;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.services.leitura.LeituraService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

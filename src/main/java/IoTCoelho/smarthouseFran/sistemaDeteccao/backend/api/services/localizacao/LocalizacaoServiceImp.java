@@ -1,7 +1,7 @@
 package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.services.localizacao;
 
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.LocalizacaoRequest;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.LocalizacaoResponse;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.localizacao.LocalizacaoRequest;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.localizacao.LocalizacaoResponse;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.actions.Localizacao;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.enums.Regiao;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.exceptions.ModelIntegrityViolationException;

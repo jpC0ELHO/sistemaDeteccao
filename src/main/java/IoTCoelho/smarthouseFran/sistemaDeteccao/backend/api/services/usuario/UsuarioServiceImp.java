@@ -1,7 +1,7 @@
 package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.services.usuario;
 
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.UsuarioRequest;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.UsuarioResponse;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.usuario.UsuarioRequest;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.usuario.UsuarioResponse;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.Usuario;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.exceptions.ModelIntegrityViolationException;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.exceptions.ModelNotFoundException;
@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import static IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.UsuarioRequest.toEntidade;
+import static IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.usuario.UsuarioRequest.toEntidade;
 
 @Service
 @Log4j2

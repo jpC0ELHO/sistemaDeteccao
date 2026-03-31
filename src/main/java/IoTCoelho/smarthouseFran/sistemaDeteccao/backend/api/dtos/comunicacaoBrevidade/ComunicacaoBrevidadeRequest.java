@@ -1,4 +1,4 @@
-package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos;
+package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.comunicacaoBrevidade;
 
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.communication.ComunicacaoBrevidade;
 

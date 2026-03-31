@@ -1,7 +1,7 @@
 package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.controllers;
 
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.SensoresRequest;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.SensoresResponse;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.sensores.SensorRequest;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.sensores.SensorResponse;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.services.sensores.SensoresService;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.enums.Regiao;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.enums.SensoresTipo;
@@ -23,25 +23,25 @@ public class SensoresController {
     private final SensoresService sensoresService;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<SensoresResponse>>findSensoresList(){
+    public ResponseEntity<List<SensorResponse>>findSensoresList(){
         return ResponseEntity.status(HttpStatus.OK).body(sensoresService.findSensoresList());
     }
     @GetMapping(value = "/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Optional<SensoresResponse>>findSensoresId(@PathVariable UUID id){
+    public ResponseEntity<Optional<SensorResponse>>findSensoresId(@PathVariable UUID id){
         return ResponseEntity.status(HttpStatus.OK).body(sensoresService.findSensoresId(id));
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public void createSensores(@RequestBody SensoresRequest sensoresRequest){
-        sensoresService.createSensores(sensoresRequest);
+    public void createSensores(@RequestBody SensorRequest sensorRequest){
+        sensoresService.createSensores(sensorRequest);
     }
 
     @PutMapping(value = "/{id}",consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public void updatedSensores(@PathVariable UUID id,@RequestBody SensoresRequest sensoresRequest){
-        sensoresService.updateSensores(id,sensoresRequest);
+    public void updatedSensores(@PathVariable UUID id,@RequestBody SensorRequest sensorRequest){
+        sensoresService.updateSensores(id, sensorRequest);
     }
 
     @DeleteMapping(value = "/{id}")

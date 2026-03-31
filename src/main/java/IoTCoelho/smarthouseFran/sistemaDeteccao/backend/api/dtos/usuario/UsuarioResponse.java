@@ -1,4 +1,4 @@
-package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos;
+package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.usuario;
 
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.Usuario;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.enums.Role;

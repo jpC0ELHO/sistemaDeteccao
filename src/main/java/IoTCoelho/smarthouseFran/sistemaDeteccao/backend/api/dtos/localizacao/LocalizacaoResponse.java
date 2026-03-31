@@ -1,8 +1,8 @@
-package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos;
+package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.localizacao;
 
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.actions.Localizacao;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.devices.Sensor;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.enums.Regiao;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.enums.SensoresTipo;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
@@ -13,29 +13,24 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.UUID;
 
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-@JsonPropertyOrder({"uuid","nome","ativadoDesativado","horarioAcionamento","memoriaUsada","memoriaDisponivel",
-"valorDadosTransferencia","dadosDescricao","regiao","sensorTipo","createdBy","lastModifiedBy","createdAt","updatedAt"})
-public record SensoresResponse(
+@JsonPropertyOrder({"uuid","sensores","latitude","longitude","regiao","dataInstalacao"
+        ,"createdBy","lastModifiedBy","createdAt","updatedAt"})
+public record LocalizacaoResponse(
         UUID uuid,
-        String nome,
-        boolean ativadoDesativado,
+        Sensor sensor,
+        Double latitude,
+        Double longitude,
+        Map<Regiao,Boolean>regiao,
         @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
         @JsonSerialize(using = LocalDateTimeSerializer.class)
         @JsonDeserialize(using = LocalDateTimeDeserializer.class)
         @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss", shape = JsonFormat.Shape.STRING)
-        LocalDateTime horarioAcionamento,
-        BigDecimal memoriaUsada,
-        BigDecimal memoriaDisponivel,
-        BigDecimal valorDadosTransferencia,
-        String dadosDescricao,
-        Map<Regiao,Boolean>regiao,
-        Map<SensoresTipo,Boolean>sensoresTipo,
+        LocalDateTime dataInstalacao,
         String createdBy,
         String lastModifiedBy,
         @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
@@ -49,27 +44,22 @@ public record SensoresResponse(
         @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss", shape = JsonFormat.Shape.STRING)
         LocalDateTime updatedAt
 
-
 ) {
-    public static SensoresResponse toResponse(Sensor sensor){
-        if (sensor ==null){
+    public static LocalizacaoResponse toResponse(Localizacao localizacao){
+        if (localizacao==null){
             return null;
         }
-        return new SensoresResponse(
-          sensor.getUuid(),
-          sensor.getNome(),
-          sensor.isAtivadoDesativado(),
-          sensor.getHorarioAcionamento(),
-          sensor.getMemoriaUsada(),
-          sensor.getMemoriaDisponivel(),
-          sensor.getValorDadosTransferencia(),
-          sensor.getDadosDescricao(),
-          sensor.getRegiao(),
-          sensor.getSensorTipo(),
-          sensor.getCreatedBy(),
-          sensor.getLastModifiedBy(),
-          sensor.getCreatedAt(),
-          sensor.getUpdatedAt()
+        return new LocalizacaoResponse(
+                localizacao.getUuid(),
+                localizacao.getSensor(),
+                localizacao.getLatitude(),
+                localizacao.getLongitude(),
+                localizacao.getRegiao(),
+                localizacao.getDataInstalacao(),
+                localizacao.getCreatedBy(),
+                localizacao.getLastModifiedBy(),
+                localizacao.getCreatedAt(),
+                localizacao.getUpdatedAt()
         );
     }
 }

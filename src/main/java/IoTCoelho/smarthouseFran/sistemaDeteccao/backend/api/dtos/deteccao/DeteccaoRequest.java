@@ -1,4 +1,4 @@
-package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos;
+package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.deteccao;
 
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.actions.Leitura;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.enums.EventoTipo;

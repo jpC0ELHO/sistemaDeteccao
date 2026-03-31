@@ -1,4 +1,4 @@
-package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos;
+package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.device;
 
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.devices.Device;
 import com.fasterxml.jackson.annotation.JsonFormat;

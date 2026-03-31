@@ -1,7 +1,7 @@
 package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.services.evento;
 
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.EventoRequest;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.EventoResponse;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.evento.EventoRequest;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.evento.EventoResponse;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.actions.Leitura;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.enums.EventoTipo;
 

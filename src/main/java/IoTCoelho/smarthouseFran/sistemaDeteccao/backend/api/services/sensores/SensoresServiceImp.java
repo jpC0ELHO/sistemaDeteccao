@@ -1,7 +1,7 @@
 package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.services.sensores;
 
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.SensoresRequest;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.SensoresResponse;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.sensores.SensorRequest;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.sensores.SensorResponse;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.devices.Sensor;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.enums.Regiao;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.enums.SensoresTipo;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 
-import static IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.SensoresRequest.toEntidade;
+import static IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.sensores.SensorRequest.toEntidade;
 
 @Log4j2
 @Service
@@ -22,14 +22,14 @@ import static IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.Sensores
 public class SensoresServiceImp implements SensoresService{
     private final SensoresRepository sensoresRespository;
     @Override
-    public List<SensoresResponse> findSensoresList() {
+    public List<SensorResponse> findSensoresList() {
         try {
             var findSensoresList=sensoresRespository.findAll();
             if (findSensoresList.isEmpty()){
             log.info("List not found, try again or verify the error.");
             throw new ModelNotFoundException("List not found!");
             }
-            return findSensoresList.stream().map(SensoresResponse::toResponse).toList();
+            return findSensoresList.stream().map(SensorResponse::toResponse).toList();
         }catch (RuntimeException e){
             log.error("Error: {} ",e.getMessage(),e);
             throw e;
@@ -37,36 +37,36 @@ public class SensoresServiceImp implements SensoresService{
     }
 
     @Override
-    public Optional<SensoresResponse> findSensoresId(UUID uuid) {
+    public Optional<SensorResponse> findSensoresId(UUID uuid) {
         var findSensoresId=sensoresRespository.findById(uuid);
         if (findSensoresId.isEmpty()){
             log.warn("Id: {} not found",uuid);
             throw new ModelNotFoundException("ID not found!");
         }
-        return findSensoresId.map(SensoresResponse::toResponse);
+        return findSensoresId.map(SensorResponse::toResponse);
     }
 
     @Override
-    public void createSensores(SensoresRequest sensoresRequest) {
-    var findSensoresByNome=sensoresRespository.findByNome(sensoresRequest.nome());
+    public void createSensores(SensorRequest sensorRequest) {
+    var findSensoresByNome=sensoresRespository.findByNome(sensorRequest.nome());
     if (findSensoresByNome.isPresent()){
-        log.warn("Sensor with name: {} already exists!",sensoresRequest.nome());
+        log.warn("Sensor with name: {} already exists!", sensorRequest.nome());
         throw new ModelIntegrityViolationException("This name already exists!");
     }
-    sensoresRespository.save(toEntidade(sensoresRequest));
+    sensoresRespository.save(toEntidade(sensorRequest));
     }
 
     @Override
-    public void updateSensores(UUID uuid, SensoresRequest sensoresRequest) {
+    public void updateSensores(UUID uuid, SensorRequest sensorRequest) {
         var findSensorById =
         sensoresRespository.findById(uuid).orElseThrow(() -> new ModelNotFoundException("ID not found!"));
 
-        findSensorById.setNome(sensoresRequest.nome());
-        findSensorById.setAtivadoDesativado(sensoresRequest.ativadoDesativado());
-        findSensorById.setHorarioAcionamento(sensoresRequest.horarioAcionamento());
-        findSensorById.setMemoriaUsada(sensoresRequest.memoriaUsada());
-        findSensorById.setMemoriaDisponivel(sensoresRequest.memoriaDisponivel());
-        findSensorById.setValorDadosTransferencia(sensoresRequest.valorDadosTransferencia());
+        findSensorById.setNome(sensorRequest.nome());
+        findSensorById.setAtivadoDesativado(sensorRequest.ativadoDesativado());
+        findSensorById.setHorarioAcionamento(sensorRequest.horarioAcionamento());
+        findSensorById.setMemoriaUsada(sensorRequest.memoriaUsada());
+        findSensorById.setMemoriaDisponivel(sensorRequest.memoriaDisponivel());
+        findSensorById.setValorDadosTransferencia(sensorRequest.valorDadosTransferencia());
         sensoresRespository.save(findSensorById);
     }
 

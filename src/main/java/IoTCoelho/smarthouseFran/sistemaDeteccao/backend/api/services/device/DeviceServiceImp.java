@@ -1,7 +1,7 @@
 package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.services.device;
 
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.DeviceRequest;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.DeviceResponse;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.device.DeviceRequest;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.device.DeviceResponse;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.exceptions.ModelNotFoundException;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.repositories.DeviceRepository;
 import lombok.AllArgsConstructor;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import static IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.DeviceRequest.toEntidade;
+import static IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.device.DeviceRequest.toEntidade;
 
 @AllArgsConstructor
 @Service

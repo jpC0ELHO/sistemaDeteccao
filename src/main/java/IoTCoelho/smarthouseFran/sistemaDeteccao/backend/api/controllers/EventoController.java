@@ -1,8 +1,8 @@
 package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.controllers;
 
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.DeteccaoRequest;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.EventoRequest;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.EventoResponse;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.deteccao.DeteccaoRequest;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.evento.EventoRequest;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.evento.EventoResponse;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.services.evento.EventoService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

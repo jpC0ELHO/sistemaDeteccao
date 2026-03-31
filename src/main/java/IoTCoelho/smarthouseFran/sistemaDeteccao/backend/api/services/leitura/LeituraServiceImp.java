@@ -1,9 +1,9 @@
 package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.services.leitura;
 
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.controllers.WebSocketController;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.EventoResponse;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.LeituraRequest;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.LeituraResponse;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.evento.EventoResponse;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.leitura.LeituraRequest;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.leitura.LeituraResponse;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.actions.Evento;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.actions.Leitura;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.enums.EventoTipo;

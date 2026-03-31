@@ -1,7 +1,7 @@
 package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.controllers;
 
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.ComunicacaoBrevidadeRequest;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.ComunicacaoBrevidadeResponse;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.comunicacaoBrevidade.ComunicacaoBrevidadeRequest;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.comunicacaoBrevidade.ComunicacaoBrevidadeResponse;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.services.comunicacaoBrevidade.ComunicacaoBrevidadeService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

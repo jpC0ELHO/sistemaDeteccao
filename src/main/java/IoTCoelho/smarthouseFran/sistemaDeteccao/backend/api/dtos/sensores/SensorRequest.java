@@ -1,4 +1,4 @@
-package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos;
+package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.sensores;
 
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.devices.Sensor;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.enums.Regiao;
@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 import java.util.Map;
 
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public record SensoresRequest(
+public record SensorRequest(
         @NotBlank
         String nome,
         @NotNull
@@ -43,20 +43,20 @@ public record SensoresRequest(
         @NotNull
         Map<SensoresTipo,Boolean>sensoresTipo
 ) {
-    public static Sensor toEntidade(SensoresRequest sensoresRequest){
-        if (sensoresRequest==null){
+    public static Sensor toEntidade(SensorRequest sensorRequest){
+        if (sensorRequest ==null){
             return null;
         }
         return new Sensor(
-                sensoresRequest.nome,
-                sensoresRequest.ativadoDesativado,
-                sensoresRequest.horarioAcionamento,
-                sensoresRequest.memoriaUsada,
-                sensoresRequest.memoriaDisponivel,
-                sensoresRequest.valorDadosTransferencia,
-                sensoresRequest.dadosDescricao,
-                sensoresRequest.regiao,
-                sensoresRequest.sensoresTipo
+                sensorRequest.nome,
+                sensorRequest.ativadoDesativado,
+                sensorRequest.horarioAcionamento,
+                sensorRequest.memoriaUsada,
+                sensorRequest.memoriaDisponivel,
+                sensorRequest.valorDadosTransferencia,
+                sensorRequest.dadosDescricao,
+                sensorRequest.regiao,
+                sensorRequest.sensoresTipo
         );
     }
 }

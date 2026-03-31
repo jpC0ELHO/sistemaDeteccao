@@ -1,7 +1,7 @@
 package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.services.comunicacaoBrevidade;
 
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.ComunicacaoBrevidadeRequest;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.ComunicacaoBrevidadeResponse;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.comunicacaoBrevidade.ComunicacaoBrevidadeRequest;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.comunicacaoBrevidade.ComunicacaoBrevidadeResponse;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.exceptions.ModelNotFoundException;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.repositories.ComunicacaoBrevidadeRepository;
 import lombok.AllArgsConstructor;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import static IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.ComunicacaoBrevidadeRequest.toEntidade;
+import static IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.comunicacaoBrevidade.ComunicacaoBrevidadeRequest.toEntidade;
 
 @Service
 @AllArgsConstructor

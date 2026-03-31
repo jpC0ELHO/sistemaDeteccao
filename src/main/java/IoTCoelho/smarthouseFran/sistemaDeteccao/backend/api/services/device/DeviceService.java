@@ -1,7 +1,7 @@
 package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.services.device;
 
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.DeviceRequest;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.DeviceResponse;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.device.DeviceRequest;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.device.DeviceResponse;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,7 +1,7 @@
 package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.services.usuario;
 
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.UsuarioRequest;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.UsuarioResponse;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.usuario.UsuarioRequest;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.usuario.UsuarioResponse;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.List;
