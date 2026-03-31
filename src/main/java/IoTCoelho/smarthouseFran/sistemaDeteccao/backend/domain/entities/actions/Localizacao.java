@@ -1,5 +1,7 @@
-package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities;
+package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.actions;
 
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.Entidade;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.devices.Sensor;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.enums.Regiao;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
@@ -26,10 +28,10 @@ import java.util.Map;
 @Table(name = "local")
 @EntityListeners(AuditingEntityListener.class)
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class Localizacao extends Entidade{
+public class Localizacao extends Entidade {
     @ManyToOne
     @JoinColumn(name = "sensor_id", nullable = false)
-    private Sensores sensor;
+    private Sensor sensor;
     @Column(precision = 5,name = "Latitude",nullable = false)
     private Double latitude;
     @Column(precision = 5,name = "Longitude",nullable = false)

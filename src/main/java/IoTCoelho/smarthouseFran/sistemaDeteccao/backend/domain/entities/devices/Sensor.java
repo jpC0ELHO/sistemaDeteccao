@@ -1,5 +1,6 @@
-package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities;
+package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.devices;
 
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.Entidade;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.enums.Regiao;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.enums.SensoresTipo;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -30,7 +31,7 @@ import java.util.Map;
 @EqualsAndHashCode(callSuper = true)
 @EntityListeners(AuditingEntityListener.class)
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class Sensores extends Entidade{
+public class Sensor extends Entidade {
     @Column(nullable = false,name = "nome",length = 15)
     private String nome;
     @Column(name = "status")

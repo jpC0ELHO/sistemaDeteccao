@@ -1,6 +1,6 @@
 package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos;
 
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.Sensores;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.devices.Sensor;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.enums.Regiao;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.enums.SensoresTipo;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -43,11 +43,11 @@ public record SensoresRequest(
         @NotNull
         Map<SensoresTipo,Boolean>sensoresTipo
 ) {
-    public static Sensores toEntidade(SensoresRequest sensoresRequest){
+    public static Sensor toEntidade(SensoresRequest sensoresRequest){
         if (sensoresRequest==null){
             return null;
         }
-        return new Sensores(
+        return new Sensor(
                 sensoresRequest.nome,
                 sensoresRequest.ativadoDesativado,
                 sensoresRequest.horarioAcionamento,

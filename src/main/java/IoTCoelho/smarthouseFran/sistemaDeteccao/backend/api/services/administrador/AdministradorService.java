@@ -1,7 +1,7 @@
 package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.services.administrador;
 
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.AdministradorRequest;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.AdministradorResponse;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.administrador.AdministradorRequest;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.administrador.AdministradorResponse;
 
 import java.util.List;
 import java.util.Optional;

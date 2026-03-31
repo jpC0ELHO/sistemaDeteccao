@@ -1,6 +1,6 @@
 package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.repositories;
 
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.Localizacao;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.actions.Localizacao;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.enums.Regiao;
 import org.springframework.data.jpa.repository.JpaRepository;
 

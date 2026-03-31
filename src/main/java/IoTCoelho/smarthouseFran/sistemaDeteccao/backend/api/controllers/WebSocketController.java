@@ -1,7 +1,7 @@
 package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.controllers;
 
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.Evento;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.Leitura;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.actions.Evento;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.actions.Leitura;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;

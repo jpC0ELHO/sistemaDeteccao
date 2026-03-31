@@ -1,9 +1,9 @@
 package IoTCoelho.smarthouseFran.sistemaDeteccao.frontend.servlets;
 
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.services.leitura.LeituraService;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.Leitura;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.Localizacao;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.Sensores;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.actions.Leitura;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.actions.Localizacao;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.devices.Sensor;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.enums.DeteccaoTipo;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.repositories.LocalizacaoRepository;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.repositories.SensoresRepository;
@@ -40,7 +40,7 @@ public class LeituraServlet extends HttpServlet {
         UUID localId = UUID.fromString(request.getParameter("localId"));
 
         // Obter sensor e local
-        Sensores sensor = sensorRepository.findById(sensorId)
+        Sensor sensor = sensorRepository.findById(sensorId)
                 .orElseThrow(() -> new RuntimeException("Sensor não encontrado"));
         Localizacao local = localizacaoRepository.findById(localId)
                 .orElseThrow(() -> new RuntimeException("Localização não encontrada"));

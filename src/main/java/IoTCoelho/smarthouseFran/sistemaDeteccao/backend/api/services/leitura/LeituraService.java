@@ -2,7 +2,7 @@ package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.services.leitura;
 
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.LeituraRequest;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.LeituraResponse;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.Leitura;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.actions.Leitura;
 
 import java.util.List;
 import java.util.Optional;

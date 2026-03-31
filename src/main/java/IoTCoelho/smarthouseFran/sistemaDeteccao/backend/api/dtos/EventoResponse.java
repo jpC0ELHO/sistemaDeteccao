@@ -1,9 +1,9 @@
 package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos;
 
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.Evento;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.Leitura;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.Localizacao;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.Sensores;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.actions.Evento;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.actions.Leitura;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.actions.Localizacao;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.devices.Sensor;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.enums.EventoTipo;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -32,7 +32,7 @@ public record EventoResponse(
         @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss", shape = JsonFormat.Shape.STRING)
         LocalDateTime horarioEvento,
         Map<EventoTipo,Boolean>eventoTipo,
-        Sensores sensor,
+        Sensor sensor,
         Leitura leitura,
         String createdBy,
         String lastModifiedBy,

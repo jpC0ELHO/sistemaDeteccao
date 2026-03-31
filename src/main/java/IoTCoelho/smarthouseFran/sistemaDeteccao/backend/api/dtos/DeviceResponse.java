@@ -1,6 +1,6 @@
 package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos;
 
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.Device;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.devices.Device;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;

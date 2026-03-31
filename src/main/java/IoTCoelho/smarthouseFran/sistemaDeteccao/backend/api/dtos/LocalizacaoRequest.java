@@ -1,7 +1,7 @@
 package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos;
 
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.Localizacao;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.Sensores;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.actions.Localizacao;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.devices.Sensor;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.enums.Regiao;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
@@ -19,7 +19,7 @@ import java.util.Map;
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public record LocalizacaoRequest(
         @NotNull
-        Sensores sensores,
+        Sensor sensor,
         @NotNull
         Double latitude,
         @NotNull
@@ -38,7 +38,7 @@ public record LocalizacaoRequest(
             return null;
         }
         return new Localizacao(
-                localizacaoRequest.sensores,
+                localizacaoRequest.sensor,
                 localizacaoRequest.latitude,
                 localizacaoRequest.longitude,
                 localizacaoRequest.regiao,

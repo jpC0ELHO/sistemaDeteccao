@@ -55,7 +55,7 @@ public class Usuario extends Entidade implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+        return List.of(()-> "ROLE_"+role.name());
     }
 
     @Override
@@ -75,6 +75,6 @@ public class Usuario extends Entidade implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return UserDetails.super.isEnabled();
+        return ativo;
     }
 }

@@ -1,5 +1,7 @@
-package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities;
+package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.actions;
 
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.Entidade;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.devices.Sensor;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.enums.DeteccaoTipo;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
@@ -26,7 +28,7 @@ import java.util.List;
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class Leitura extends Entidade{
+public class Leitura extends Entidade {
     @Column(nullable = false, name = "deteccao_sim_nao")
     private boolean deteccaoSimNao;
     @Enumerated(EnumType.STRING)
@@ -42,7 +44,7 @@ public class Leitura extends Entidade{
     private Localizacao local;
     @ManyToOne
     @JoinColumn(name = "sensor_id", nullable = false)
-    private Sensores sensor;
+    private Sensor sensor;
     @Column(name = "valor_aferido", nullable = false)
     private int valorAferido;
 

@@ -1,5 +1,7 @@
-package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities;
+package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.actions;
 
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.Entidade;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.devices.Sensor;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.enums.EventoTipo;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
@@ -45,7 +47,7 @@ public class Evento extends Entidade {
     private Map<EventoTipo,Boolean> eventoTipo = new HashMap<>();
     @ManyToOne
     @JoinColumn(name = "sensor_id")
-    private Sensores sensor;
+    private Sensor sensor;
     @ManyToOne
     @JoinColumn(name = "leitura_id")
     private Leitura leitura;

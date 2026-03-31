@@ -1,9 +1,9 @@
 package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos;
 
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.Evento;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.Leitura;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.Localizacao;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.Sensores;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.actions.Evento;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.actions.Leitura;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.actions.Localizacao;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.devices.Sensor;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.enums.DeteccaoTipo;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -30,7 +30,7 @@ public record LeituraRequest(
         @NotNull
         Localizacao local,
         @NotNull
-        Sensores sensores,
+        Sensor sensor,
         @NotNull
         int valorAferido,
         @NotNull
@@ -45,7 +45,7 @@ public record LeituraRequest(
                 leituraRequest.deteccaoTipo,
                 leituraRequest.horarioDetec,
                 leituraRequest.local,
-                leituraRequest.sensores,
+                leituraRequest.sensor,
                 leituraRequest.valorAferido,
                 leituraRequest.eventos
         );

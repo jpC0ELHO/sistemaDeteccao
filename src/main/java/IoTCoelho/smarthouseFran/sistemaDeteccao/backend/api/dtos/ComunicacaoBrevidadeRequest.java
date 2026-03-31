@@ -1,6 +1,6 @@
 package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos;
 
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.ComunicacaoBrevidade;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.communication.ComunicacaoBrevidade;
 
 import java.time.LocalDateTime;
 

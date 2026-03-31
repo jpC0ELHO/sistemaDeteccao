@@ -1,5 +1,6 @@
-package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities;
+package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.communication;
 
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.Entidade;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -14,7 +15,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "comunicacao_brevidade")
-public class ComunicacaoBrevidade extends Entidade{
+public class ComunicacaoBrevidade extends Entidade {
     @Column(nullable = false)
     private String macAddress;//endereco mac
     // Localização atual do smartwatch

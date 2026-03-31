@@ -2,7 +2,7 @@ package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.services.sensores;
 
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.SensoresRequest;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.SensoresResponse;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.Sensores;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.devices.Sensor;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.enums.Regiao;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.enums.SensoresTipo;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.exceptions.ModelIntegrityViolationException;
@@ -83,7 +83,7 @@ public class SensoresServiceImp implements SensoresService{
 
     @Override
     public void atualizarSensores(UUID uuid,Map<SensoresTipo, Boolean> novosEstados) {
-        Sensores sensor= sensoresRespository
+        Sensor sensor= sensoresRespository
                 .findById(uuid)
                 .orElseThrow(()->new ModelNotFoundException("ID: "+uuid+" not found!"));
         if (sensor.getSensorTipo()==null){
@@ -98,7 +98,7 @@ public class SensoresServiceImp implements SensoresService{
 
     @Override
     public void atualizarRegioes(UUID uuid,Map<Regiao, Boolean> novasRegioes) {
-        Sensores sensor = sensoresRespository
+        Sensor sensor = sensoresRespository
                 .findById(uuid)
                 .orElseThrow(() -> new ModelNotFoundException("Sensor com ID " + uuid + " não encontrado"));
 

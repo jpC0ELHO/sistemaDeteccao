@@ -2,8 +2,8 @@ package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.services.evento;
 
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.EventoRequest;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.EventoResponse;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.Evento;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.Leitura;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.actions.Evento;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.actions.Leitura;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.enums.EventoTipo;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.exceptions.ModelNotFoundException;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.repositories.EventoRepository;

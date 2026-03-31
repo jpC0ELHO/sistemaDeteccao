@@ -2,7 +2,7 @@ package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.services.localizaca
 
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.LocalizacaoRequest;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.LocalizacaoResponse;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.Localizacao;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.actions.Localizacao;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.enums.Regiao;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.exceptions.ModelIntegrityViolationException;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.exceptions.ModelNotFoundException;
@@ -45,7 +45,7 @@ public class LocalizacaoServiceImp implements LocalizacaoService{
         var findLocalizacaoByRegiao=localizacaoRepository.findByRegiao(localizacaoRequest.regiao());
         if (findLocalizacaoByRegiao.isPresent()){
             throw new ModelIntegrityViolationException("Localizacao with Regiao: "
-                    +localizacaoRequest.regiao()+"and Sensor: "+localizacaoRequest.sensores()+" already exists!");
+                    +localizacaoRequest.regiao()+"and Sensor: "+localizacaoRequest.sensor()+" already exists!");
         }
         localizacaoRepository.save(LocalizacaoRequest.toEntidade(localizacaoRequest));
     }
@@ -55,8 +55,8 @@ public class LocalizacaoServiceImp implements LocalizacaoService{
         var findLocalizacaoId=localizacaoRepository
                 .findById(uuid)
                 .orElseThrow(()-> new ModelNotFoundException("Localizacao ID: "+uuid+" not found!"));
-        if (localizacaoRequest.sensores()!=null){
-            findLocalizacaoId.setSensor(localizacaoRequest.sensores());
+        if (localizacaoRequest.sensor()!=null){
+            findLocalizacaoId.setSensor(localizacaoRequest.sensor());
         }
         else if (localizacaoRequest.latitude()!=null){
             findLocalizacaoId.setLatitude(localizacaoRequest.latitude());

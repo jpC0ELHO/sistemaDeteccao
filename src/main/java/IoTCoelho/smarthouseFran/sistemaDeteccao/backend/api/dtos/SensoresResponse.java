@@ -1,6 +1,6 @@
 package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos;
 
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.Sensores;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.devices.Sensor;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.enums.Regiao;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.enums.SensoresTipo;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -51,25 +51,25 @@ public record SensoresResponse(
 
 
 ) {
-    public static SensoresResponse toResponse(Sensores sensores){
-        if (sensores==null){
+    public static SensoresResponse toResponse(Sensor sensor){
+        if (sensor ==null){
             return null;
         }
         return new SensoresResponse(
-          sensores.getUuid(),
-          sensores.getNome(),
-          sensores.isAtivadoDesativado(),
-          sensores.getHorarioAcionamento(),
-          sensores.getMemoriaUsada(),
-          sensores.getMemoriaDisponivel(),
-          sensores.getValorDadosTransferencia(),
-          sensores.getDadosDescricao(),
-          sensores.getRegiao(),
-          sensores.getSensorTipo(),
-          sensores.getCreatedBy(),
-          sensores.getLastModifiedBy(),
-          sensores.getCreatedAt(),
-          sensores.getUpdatedAt()
+          sensor.getUuid(),
+          sensor.getNome(),
+          sensor.isAtivadoDesativado(),
+          sensor.getHorarioAcionamento(),
+          sensor.getMemoriaUsada(),
+          sensor.getMemoriaDisponivel(),
+          sensor.getValorDadosTransferencia(),
+          sensor.getDadosDescricao(),
+          sensor.getRegiao(),
+          sensor.getSensorTipo(),
+          sensor.getCreatedBy(),
+          sensor.getLastModifiedBy(),
+          sensor.getCreatedAt(),
+          sensor.getUpdatedAt()
         );
     }
 }

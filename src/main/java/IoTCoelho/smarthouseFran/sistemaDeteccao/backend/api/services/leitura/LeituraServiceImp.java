@@ -4,8 +4,8 @@ import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.controllers.WebSocke
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.EventoResponse;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.LeituraRequest;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.LeituraResponse;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.Evento;
-import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.Leitura;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.actions.Evento;
+import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.actions.Leitura;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.enums.EventoTipo;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.exceptions.ModelNotFoundException;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.repositories.EventoRepository;
@@ -65,7 +65,7 @@ public class LeituraServiceImp implements LeituraService {
         Optional<EventoTipo>eventoTipoOpt=EventoTipo.detectarEvento(valor);
         eventoTipoOpt.ifPresent(eventoTipo->{
             Evento evento=new Evento();
-            evento.setSensor(leituraRequest.sensores());
+            evento.setSensor(leituraRequest.sensor());
             evento.setHorarioEvento(LocalDateTime.now());
             evento.setDescricao("Evento detectado: "+eventoTipo.name());
             evento.setEventoTipo(Map.of(eventoTipo,true));
@@ -92,7 +92,7 @@ public class LeituraServiceImp implements LeituraService {
             .orElseThrow(()-> new ModelNotFoundException("ID: "+uuid+" not found!"));
     findLeituraId.setDeteccaoSimNao(leituraRequest.deteccao_sim_nao());
     findLeituraId.setDeteccaoTipo(leituraRequest.deteccaoTipo());
-    findLeituraId.setSensor(leituraRequest.sensores());
+    findLeituraId.setSensor(leituraRequest.sensor());
     findLeituraId.setLocal(leituraRequest.local());
     leituraRepository.save(findLeituraId);
     }

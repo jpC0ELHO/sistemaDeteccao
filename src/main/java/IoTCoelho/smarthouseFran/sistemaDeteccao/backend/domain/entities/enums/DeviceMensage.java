@@ -1,5 +1,5 @@
 package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.enums;
 
 public enum DeviceMensage {
-    AUTORIZADO,ERROR,NEGADO
+    AUTORIZADO,ERROR,NEGADO,FALHA,ALERTA
 }

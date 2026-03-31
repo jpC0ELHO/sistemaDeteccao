@@ -1,68 +1,61 @@
-package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos;
+package IoTCoelho.smarthouseFran.sistemaDeteccao.backend.api.dtos.administrador;
 
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.Administrador;
 import IoTCoelho.smarthouseFran.sistemaDeteccao.backend.domain.entities.enums.Role;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.deser.std.DateDeserializers;
 import com.fasterxml.jackson.databind.ser.std.DateSerializer;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public record AdministradorRequest(
-        @NotNull
+@JsonPropertyOrder({"uuid","createdBy","lastModifiedBy","createdAt","updatedAt","username","password","role","cpf",
+        "ativo","isAccountNonExpired","isAccountNonLocked","isCredentialNonExpired","isEnabled"})
+public record AdministradorResponse(
         UUID uuid,
-        @NotBlank
         String createdBy,
-        @NotNull
         String lastModifiedBy,
         @DateTimeFormat(pattern = "dd/MM/yyyy")
         @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss",shape = JsonFormat.Shape.STRING)
         @JsonDeserialize(using = DateDeserializers.DateDeserializer.class)
         @JsonSerialize(using = DateSerializer.class)
-        @NotBlank
         LocalDateTime createdAt,
         @DateTimeFormat(pattern = "dd/MM/yyyy")
         @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss",shape = JsonFormat.Shape.STRING)
         @JsonDeserialize(using = DateDeserializers.DateDeserializer.class)
         @JsonSerialize(using = DateSerializer.class)
-        @NotNull
         LocalDateTime updateAt,
-        @NotBlank
         String username,
-        @NotBlank
         String password,
-        @NotNull
         Role role,
-        @NotBlank
         String cpf,
-        @NotNull
-        boolean isAtivo
+        Boolean ativo
+
 
 ) {
-    public static Administrador toEntidade(AdministradorRequest administradorRequest){
-        if (administradorRequest==null){
+    public static AdministradorResponse toResponse(Administrador administrador){
+        if (administrador==null){
             return null;
         }
-        return new Administrador(
-                administradorRequest.uuid,
-                administradorRequest.createdBy,
-                administradorRequest.lastModifiedBy,
-                administradorRequest.createdAt,
-                administradorRequest.updateAt,
-                administradorRequest.username,
-                administradorRequest.password,
-                administradorRequest.role,
-                administradorRequest.cpf,
-                administradorRequest.isAtivo
+        return new AdministradorResponse(
+                administrador.getUuid(),
+                administrador.getCreatedBy(),
+                administrador.getLastModifiedBy(),
+                administrador.getCreatedAt(),
+                administrador.getUpdatedAt(),
+                administrador.getUsername(),
+                administrador.getPassword(),
+                administrador.getRole(),
+                administrador.getCpf(),
+                administrador.isAtivo()
+
         );
     }
 }
